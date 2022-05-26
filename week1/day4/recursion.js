@@ -1,4 +1,9 @@
-const printItems = function (array) {};
+const printItems = (array) => {
+  if(array.length > 0){
+    console.log(array[0])
+    printItems(array.slice(1))
+  }
+};
 
 const array = ['😎', '💩', '🤗', '😼', '😂'];
 printItems(array);

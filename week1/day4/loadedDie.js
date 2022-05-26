@@ -8,12 +8,18 @@ const rollDie = function () {
 console.log(rollDie());  // 1 (for example)
 However, instead of a random die, we want to create a cheat die that would let us predict the next number. Create a function called makeLoadedDie() which returns a function that when called, seems to generate random numbers between 1 and 6, but in fact returns numbers in a row from a hardcoded list.
 */
-function makeLoadedDie() {
-  const list = [5, 4, 6, 1, 6, 4, 2, 3, 3, 5];
+const makeLoadedDie = () => {
   /* your code here */
-
-  return function () {
+  const list = [5, 4, 6, 1, 6, 4, 2, 3, 3, 5];
+  let i=0;
+  
+  return  () => {
     /* your code here */
+    i +=1;
+    if(i > list.length){
+      i=1;
+    }
+    return list[i-1] 
   };
 }
 
