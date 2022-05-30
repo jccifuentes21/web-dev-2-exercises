@@ -1,8 +1,11 @@
 const printItems = (array) => {
-  if(array.length > 0){
-    console.log(array[0])
-    printItems(array.slice(1))
-  }
+  array.forEach((element) =>{
+    if (Array.isArray(element)){
+      printItems(element)
+    } else {
+      console.log(element)
+    }
+  })
 };
 
 const array = ['😎', '💩', '🤗', '😼', '😂'];
