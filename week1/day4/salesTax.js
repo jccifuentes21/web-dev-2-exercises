@@ -36,8 +36,30 @@ const companySalesData = [
   }
 ];
 
-const calculateSalesTax = function(salesData, taxRates) {
+const calculateSalesTax = (salesData, taxRates) => {
     // Implement your code here
+
+    const result = {}
+    const company = {}
+
+    salesData.forEach((element) =>{
+      if(result[element.name] == null){
+        result[element.name] = company;
+        
+      } else{
+        
+        company.totalSales = 0,
+        company.totalTax = 0
+      }
+      company.totalSales = element.sales.reduce((a, b) => {
+        return a+b
+      })
+
+      company.totalTax = taxRates[element.province] * company.totalSales
+      result
+    })
+
+    return result;
 }
 
 console.log(calculateSalesTax(companySalesData, salesTaxRates));
