@@ -1,4 +1,4 @@
-const usersData = [
+let usersData = [
   {
     id: 1,
     name: 'Leanne Graham',
@@ -160,7 +160,7 @@ const usersData = [
     website: 'conrad.com',
   },
   {
-    id: 10,
+    id: 9,
     name: 'Clementina DuBuque',
     username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
@@ -181,12 +181,11 @@ const usersData = [
 // Create a function to print user full address
 // suite - street, city, zipcode
 
-const printUserAddress = (user, users) => {
-  if (user.address.suite != null){
-    return `${user.address.suite} - ${user.address.street}, ${user.address.city}, ${user.address.zipcode}.`
-  } else {
-    return `${user.address.street}, ${user.address.city}, ${user.address.zipcode}.`
+const printUserAddress = (user) => {
+  if (!user.address.suite) {
+    return `${user.address.street}, ${user.address.city}, ${user.address.zipcode}`;
   }
+  return `${user.address.suite} - ${user.address.street}, ${user.address.city}, ${user.address.zipcode}`;
 };
 
 console.log(printUserAddress(usersData[1]));
@@ -194,22 +193,46 @@ console.log(printUserAddress(usersData[4]));
 console.log(printUserAddress(usersData[6]));
 
 // Create a function to separate first name and last name for all users
+// firstName: "", lastName: ""
 
-const setFirstLastName = (users) => {};
+const setFirstLastName = (users) => {
+  const newUsersData = users.map((user) => {
+    const userFirstLastName = user.name.split(' ');
+    userFirstLastName;
+    user.firstName = userFirstLastName[0];
+    user.lastName = userFirstLastName[1];
+    return user;
+  });
+  return newUsersData;
+};
 
-console.log(setFirstLastName(usersData));
+usersData = setFirstLastName(usersData);
+usersData;
 
 // Create a function to get user by id and print object with user first and last name
-const getUserById = (userId, users) => {};
+const getUserById = (userId, users) => {
+  const selectedUser = users.find((user) => {
+    return user.id === userId;
+  });
+  return {
+    id: selectedUser.id,
+    firstName: selectedUser.firstName,
+    lastName: selectedUser.lastName,
+  };
+};
 
 console.log(getUserById(5, usersData));
 console.log(getUserById(8, usersData));
 
 // Create a function to delete user by id and print message to inform which user id deleted
 
-const deleteUser = (userId) => {};
+const deleteUser = (userId, users) => {
+  return users.filter((user, index) => {
+    return user.id !== userId;
+  });
+};
 
-console.log(deleteUser(4));
+console.log(deleteUser(4, usersData));
 
 // Create a function to add a new user and print message including new user id.
 const newUser = [
@@ -234,22 +257,25 @@ const newUser = [
 ];
 
 const createUser = (userData) => {
-  const newUser  = {}
-  newUser.id = usersData.length +1;
+  const newUser = {};
+  newUser.id = usersData.length + 1;
   userData.forEach((pair) => {
     newUser[pair[0]] = pair[1];
-  })
-  newUser
-  usersData.push(newUser)
-  return `New user added: id = ${newUser.id}`
+  });
+  usersData.push(newUser);
+  return `New user added: id - ${newUser.id}`;
 };
 
 console.log(createUser(newUser));
 
-
 // Create a function to update user by id and print updated user
 
 const updateUser = (userId, updateInfo) => {
+  let selectedUser = usersData.find((user) => {
+    return user.id === userId;
+  });
+  selectedUser[updateInfo[0]] = updateInfo[1];
+  return selectedUser;
 };
 
 console.log(updateUser(1, ['phone', '1-007-637-3180']));
