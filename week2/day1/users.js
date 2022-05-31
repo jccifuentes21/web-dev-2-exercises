@@ -250,14 +250,6 @@ console.log(createUser(newUser));
 // Create a function to update user by id and print updated user
 
 const updateUser = (userId, updateInfo) => {
-  let selectedUser;
-  usersData.forEach((user) =>{
-    if(user.id == userId){
-      user[updateInfo[0]] = updateInfo[1];
-      selectedUser = user
-    }
-    return selectedUser
-  })
 };
 
 console.log(updateUser(1, ['phone', '1-007-637-3180']));

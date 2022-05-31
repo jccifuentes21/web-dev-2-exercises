@@ -12,7 +12,16 @@ The function should return an object with each character as key names and how ma
 
 data = ['CICCC', 'Cornerstone College', 'Web Development'];
 
-const countOnly = (allItems, itemsToCount) => {};
+const getTrueItemsToCount = (itemsToCount) =>{
+}
+
+const countOnly = (allItems, itemsToCount) => {
+  let result;
+
+  const itemsToCountArray = getTrueItemsToCount(itemsToCount)
+
+  itemsToCountArray.forEach((letter))
+};
 
 console.log(countOnly(data, { a: true, c: true, l: false, o: true }));
 console.log(countOnly(data, { r: true, l: true, b: false, w: true }));
