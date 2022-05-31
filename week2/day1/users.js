@@ -181,11 +181,17 @@ const usersData = [
 // Create a function to print user full address
 // suite - street, city, zipcode
 
-const printUserAddress = (user, users) => {};
+const printUserAddress = (user, users) => {
+  if (user.address.suite != null){
+    return `${user.address.suite} - ${user.address.street}, ${user.address.city}, ${user.address.zipcode}.`
+  } else {
+    return `${user.address.street}, ${user.address.city}, ${user.address.zipcode}.`
+  }
+};
 
-console.log(printUserAddress(users[1]));
-console.log(printUserAddress(users[4]));
-console.log(printUserAddress(users[6]));
+console.log(printUserAddress(usersData[1]));
+console.log(printUserAddress(usersData[4]));
+console.log(printUserAddress(usersData[6]));
 
 // Create a function to separate first name and last name for all users
 
@@ -227,13 +233,32 @@ const newUser = [
   ['website', 'conrad.com'],
 ];
 
-const createUser = (userData) => {};
+const createUser = (userData) => {
+  const newUser  = {}
+  newUser.id = usersData.length +1;
+  userData.forEach((pair) => {
+    newUser[pair[0]] = pair[1];
+  })
+  newUser
+  usersData.push(newUser)
+  return `New user added: id = ${newUser.id}`
+};
 
 console.log(createUser(newUser));
 
+
 // Create a function to update user by id and print updated user
 
-const updateUser = (userId, updateInfo) => {};
+const updateUser = (userId, updateInfo) => {
+  let selectedUser;
+  usersData.forEach((user) =>{
+    if(user.id == userId){
+      user[updateInfo[0]] = updateInfo[1];
+      selectedUser = user
+    }
+    return selectedUser
+  })
+};
 
 console.log(updateUser(1, ['phone', '1-007-637-3180']));
 console.log(updateUser(3, ['email', 'clementine@yesenia.net']));
