@@ -11,6 +11,12 @@ All of the words can appear at the same time.
 
 //Code here...
 
+let str = "4311o th3r3 w0r1d"
+
+setTimeout(() => {
+  console.log("4311o th3r3 w0r1d")
+}, 3000);
+
 /*
 Challenge #2
 Next, let's make things more interesting...
@@ -22,3 +28,13 @@ It's okay if each of the words appears on a separate line, due to console.log.
 */
 
 //Code here...
+
+let phrase = str.split(" ")
+
+for (let i in phrase) {
+  setTimeout(() => {
+    console.log(phrase[i])
+  }, 1000 * i);
+}
+
+

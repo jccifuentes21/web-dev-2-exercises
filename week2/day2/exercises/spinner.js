@@ -51,3 +51,34 @@ You can use a regular loop or setInterval to make it work.
 Bonus: You can try to remove all these repetitive setTimeouts to and make a shorter and cleaner code.
 
 */
+
+let animationChars = ["|", "/", "-", "\\"]
+let i=0;
+
+const interval = setInterval(()=> {
+  if(i > animationChars.length-1 ) i=0;
+  process.stdout.write(`\r ${animationChars[i]}`)
+  i++;
+}, 300)
+
+setTimeout(() => {
+  clearInterval(interval)
+}, 3900);
+
+// // let animate = setInterval(() =>{
+//   for(let i in animationChars){
+//     console.log(i)
+//     setTimeout(() => {
+//       // process.stdout.write(`\r${animationChars[i]}`)
+//     }, (500*(i+1))); 
+
+//   }
+// }, 1000)
+
+
+
+
+
+
+
+

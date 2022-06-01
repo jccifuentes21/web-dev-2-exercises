@@ -12,11 +12,12 @@ const str = 'Hello World\n';
 
 //setInterval
 let i = 0;
+
 setInterval(() => {
   if (i > str.length - 1) {
     clearInterval();
   } else {
-    process.stdout.write(i.toString());
+    process.stdout.write(str[i])
     i++;
   }
 }, 300);

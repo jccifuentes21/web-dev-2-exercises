@@ -28,3 +28,22 @@ An input is a negative number: Ignore/skip any numbers that are negative. We can
 An input is not a number: Ignore/skip these as well, instead of attempting to call setTimeout with a non-number.
 
 */
+
+//node timer1.js 10 3 5 15 9
+
+const args = process.argv.slice(2)
+const newArr = args
+  .filter((el)=>{
+    return Number(el) && Number(el) >= 0
+  })
+  .map((element) =>{
+    return Number(element)
+  })
+
+newArr.sort((a,b) => a-b)
+console.log(newArr)
+newArr.forEach((element) =>{
+  setTimeout(() => {
+    console.log(`Beep - ${element} seconds`)
+  }, element*1000);
+})
